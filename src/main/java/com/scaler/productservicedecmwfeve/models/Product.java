@@ -1,5 +1,6 @@
 package com.scaler.productservicedecmwfeve.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +13,8 @@ import java.util.List;
 public class Product extends BaseModel {
     private String title;
     private double price;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Category category;
     private String description;
     private String imageUrl;

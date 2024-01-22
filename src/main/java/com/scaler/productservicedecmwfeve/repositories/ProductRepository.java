@@ -30,7 +30,6 @@ public interface ProductRepository
 
     List<Product> findByCategory_Id(Long id);
 
-
     Optional<Product> findById(Long id);
     // this will return a null ifno product matches the id
 
@@ -41,6 +40,8 @@ public interface ProductRepository
 
     @Query(value = "select p.id as id, p.title as title from product p where p.id = :id", nativeQuery = true)
     List<ProductWithIdAndTitle> somesome2(@Param("id") Long id);
+
+    List<Product> getAllByIdIsNotNull();
 }
 
 // 1. CategoryRepository.findById()
